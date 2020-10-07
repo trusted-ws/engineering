@@ -1,7 +1,6 @@
 #include <iostream>
 #include <windows.h>
 
-
 int SetClipboardText(const char *text) {
 
     if(OpenClipboard(nullptr) != 0) {
@@ -58,8 +57,11 @@ int main(void) {
 
     /* Se o clipboard atual for 'teste' enttão será substituido por 'teste1234' */
     if(strcmp(old_clip.c_str(), "teste") == 0) {
-        SetClipboardText("teste1234");
-        std::cout << "New Clipboard: " << GetClipboardText() << std::endl;
+        if(SetClipboardText("teste1234") == 0)
+            std::cout << "New Clipboard: " << GetClipboardText() << std::endl;
+        else {
+            std::cout << "New Clipboard failed!" << std::endl;
+        }
     }
 
     return 0;
