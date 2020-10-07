@@ -10,7 +10,7 @@ int SetClipboardText(const char *text) {
 
         EmptyClipboard();
 
-        clipbuffer = GlobalAlloc(GMEM_DDESHARE, strlen(text) + 1);
+        clipbuffer = GlobalAlloc(GMEM_MOVEABLE, strlen(text) + 1);
         buffer = (char*) GlobalLock(clipbuffer);
 
         strcpy(buffer, LPCSTR(text));
