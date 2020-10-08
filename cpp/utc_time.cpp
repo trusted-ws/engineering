@@ -3,8 +3,11 @@
 #include <time.h>
 #include <sstream>
 
+
 std::string getTime(int timezone) {
     time_t rawtime;
+    
+    /* Using default 'tm' structure for time. */
     struct tm *ptm;
 
     time(&rawtime);
@@ -12,7 +15,7 @@ std::string getTime(int timezone) {
     ptm = gmtime(&rawtime);
     
     char output[10];
-    sprintf(output, "%2d:%02d", (ptm->tm_hour + timezone), ptm->tm_min);
+    sprintf(output, "%2d:%02d:%02d", (ptm->tm_hour + timezone), ptm->tm_min, ptm->tm_sec);
 
     return output;
 }
