@@ -55,7 +55,7 @@ int main(void) {
     std::string old_clip = GetClipboardText();
     std::cout << "Clipboard: " << GetClipboardText() << std::endl;
 
-    /* Se o clipboard atual for 'teste' enttão será substituido por 'teste1234' */
+    /* Se o clipboard atual for 'teste' então será substituido por 'teste1234' */
     if(strcmp(old_clip.c_str(), "teste") == 0) {
         if(SetClipboardText("teste1234") == 0)
             std::cout << "New Clipboard: " << GetClipboardText() << std::endl;
